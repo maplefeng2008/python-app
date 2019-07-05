@@ -1,5 +1,13 @@
+from email import encoders
+from email.header import Header
 from email.mime.text import MIMEText
-msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
+from email.utils import parseaddr, fromataddr
+
+import smtplib
+
+def _format_addr(s):
+    name, addr = parseaddr(s)
+    return formataddr(Header(name, 'utf-8').encode(), addr)
 
 #from_addr = input('From: ')
 from_addr = 'wanglichao2002@sina.com'
@@ -10,11 +18,14 @@ to_addr = 'wlcearth@hotmail.com'
 #smtp_server = input('SMTP server: ')
 smtp_server = 'smtp.sina.com'
 
-msg['From'] = from_addr
-msg['To'] = to_addr
-msg['Subject'] = 'python send mail'
+msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
+#msg['From'] = from_addr
+msg['From'] = _format_addr('wanglc <%s>' % from_addr)
+#msg['To'] = to_addr
+msg['To'] = _format_addr('haha <%s>' % to_addr)
+#msg['Subject'] = 'python send mail'
+msg['Subject'] = Header(' python send mail', 'utf-8').encode()
 
-import smtplib
 print('connecting to smtp server...')
 server = smtplib.SMTP(smtp_server, 25)
 print('connected!')
