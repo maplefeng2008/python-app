@@ -33,7 +33,7 @@ time = datetime.datetime.now()
 lateTimes = "-1"
 for children in childrenList:
     for td in children.findAll('td'):
-        if len(td.getText()) > 10:
+        if len(td.getText()) == 19:
             if lateTimes == "-1":
                 lateTimes = ""
                 print("id  : " + sys.argv[1])
