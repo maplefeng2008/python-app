@@ -1,3 +1,4 @@
-# python-test
-1. first test is request work time from command line use python.
+# python-app for study
+1. first app is request work time from command line use python.
   > scrape-cookie-worktime.py xxxxxxxx00782
+2. second app is send and recieve email.
