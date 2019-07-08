@@ -1,3 +1,4 @@
+from email.parser import Parser
 import poplib
 
 #email = input('Email: ')
@@ -7,7 +8,7 @@ password = 'adfadf219'
 #pop3_server = input('POP3 server: ')
 pop3_server = 'outlook.office365.com'
 
-server = poplib.POP3(pop3_server)
+server = poplib.POP3_SSL(pop3_server, port=995)
 server.set_debuglevel(1)
 print(server.getwelcome().decode('utf-8'))
 
