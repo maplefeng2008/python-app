@@ -33,7 +33,10 @@ msg['To'] = _format_addr('haha <%s>' % to_addr)
 #msg['Subject'] = 'python send mail'
 msg['Subject'] = Header(' python send mail5', 'utf-8').encode()
 
-msg.attach(MIMEText('send with file...', 'plain', 'utf-8'))
+#msg.attach(MIMEText('send with file...', 'plain', 'utf-8'))
+msg.attach(MIMEText('<html><body><h1>Hello</h1>' +
+    '<p><img src="cid:0"</p>' +
+    '</body></html>', 'html', 'utf-8'))
 
 with open('./test.png', 'rb') as f:
     mime = MIMEBase('image', 'png', filename='test.png')
